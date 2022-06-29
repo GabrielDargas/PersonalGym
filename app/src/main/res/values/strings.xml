@@ -17,6 +17,7 @@
     <string name="label_numerorepeticoes">Número de Repetições</string>
     <string name="label_numeroseries">Número de Séries</string>
 
+    <string name="nomeExercicio">Número de Séries</string>
 
     <string name="button_login">Conectar</string>
     <string name="button_cadastrar">Cadastrar Exercicio</string>

@@ -3,52 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/exercicioFragment">
+    app:startDestination="@id/homeFragment">
 
+
+    <include app:graph="@navigation/login_graph" />
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="br.com.gabrieldargas.personalgym.fragments.login.LoginFragment"
-        android:label="LoginFragment"
-        tools:layout="@layout/fragment_login">
-        <action
-            android:id="@+id/action_loginFragment_to_exercicioFragment"
-            app:destination="@id/exercicioFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
-    </fragment>
-
+        android:id="@+id/homeFragment"
+        android:name="br.com.gabrieldargas.personalgym.fragments.home.HomeFragment"
+        android:label="HomeFragment" />
     <fragment
-        android:id="@+id/signUpFragment"
-        android:name="br.com.gabrieldargas.personalgym.ui.signup.SignUpFragment"
-        android:label="SignUpFragment"
-        tools:layout="@layout/fragment_signup">
-            <deepLink
-                android:id="@+id/deepLink2"
-                app:uri="https://personalgym.com.br/signup"
-                />
-        <action
-            android:id="@+id/action_signUpFragment_to_exercicioFragment"
-            app:destination="@id/exercicioFragment" />
-    </fragment>
-
-
-    <fragment
-        android:id="@+id/exercicioFragment"
-        android:name="br.com.gabrieldargas.personalgym.fragments.newexercicio.ExercicioFragment"
-        android:label="fragment_exercicio"
-        tools:layout="@layout/fragment_exercicio">
-        <deepLink
-            android:id="@+id/deepLink"
-            app:uri="https://www.personalgym.com.br/exerciciofragment"/>
-        <action
-            android:id="@+id/action_exercicioFragment_to_cadastroFragment"
-            app:destination="@id/cadastroFragment" />
-
-
-    </fragment>
-    <fragment
-        android:id="@+id/cadastroFragment"
-        android:name="br.com.gabrieldargas.personalgym.ui.cadastro.NewExercicioActivity"
-        android:label="CadastroFragment" />
+        android:id="@+id/listItemFragment"
+        android:name="br.com.gabrieldargas.personalgym.fragments.exerciciolistitem.ListItemFragment"
+        android:label="ListItemFragment" />
 </navigation>

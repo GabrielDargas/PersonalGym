@@ -1,4 +1,4 @@
-package br.com.gabrieldargas.personalgym.ui.signup
+package br.com.gabrieldargas.personalgym.fragments.signup
 
 import android.os.Bundle
 import android.view.View
@@ -6,17 +6,38 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import br.com.gabrieldargas.personalgym.R
+import br.com.gabrieldargas.personalgym.data.remote.datasource.UserRemoteFirebaseDataSourceImpl
+import br.com.gabrieldargas.personalgym.data.remote.repository.UserRepositoryImpl
 import br.com.gabrieldargas.personalgym.domain.entity.NewUser
 import br.com.gabrieldargas.personalgym.domain.entity.RequestState
+import br.com.gabrieldargas.personalgym.domain.usercases.CreateUserUseCase
 import br.com.gabrieldargas.personalgym.fragments.base.BaseFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-
-class SignUpFragment : BaseFragment(){
+@ExperimentalCoroutinesApi
+class SignUpFragment : BaseFragment() {
     override val layout = R.layout.fragment_signup
 
-    private val signUpViewModel: SignupViewModel by viewModels()
+    private val signUpViewModel: SignupViewModel by lazy {
+        ViewModelProvider(
+            this,
+            SignupViewModelFactory(
+                CreateUserUseCase(
+                    UserRepositoryImpl(
+                        UserRemoteFirebaseDataSourceImpl(
+                            FirebaseAuth.getInstance(),
+                            FirebaseFirestore.getInstance()
+                        )
+                    )
+                )
+            )
+        ).get(SignupViewModel::class.java)
+    }
 
     private lateinit var etUserNameSignUp: EditText
     private lateinit var etEmailSignUp: EditText
@@ -28,6 +49,7 @@ class SignUpFragment : BaseFragment(){
         setUpView(view)
         registerObserver()
     }
+
     private fun setUpView(view: View) {
         etUserNameSignUp = view.findViewById(R.id.etUserNameSignUp)
         etEmailSignUp = view.findViewById(R.id.etEmailSignUp)
@@ -35,30 +57,32 @@ class SignUpFragment : BaseFragment(){
         btCreateAccount = view.findViewById(R.id.btCreateAccount)
         setUpListener()
     }
+
     private fun setUpListener() {
         btCreateAccount.setOnClickListener {
-            val newUser = NewUser(
+            signUpViewModel.create(
                 etUserNameSignUp.text.toString(),
                 etEmailSignUp.text.toString(),
                 etPasswordSignUp.text.toString()
             )
-            signUpViewModel.signUp(
-                newUser
-            )
         }
     }
+
     private fun registerObserver() {
-        this.signUpViewModel.signUpState.observe(viewLifecycleOwner, Observer {
+        this.signUpViewModel.newUserState.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is RequestState.Success -> {
                     hideLoading()
                     NavHostFragment.findNavController(this)
                         .navigate(R.id.main_nav_graph)
-                } is RequestState.Error -> {
-                hideLoading()
-                showMessage(it.throwable.message)
-            } is RequestState.Loading -> showLoading("Criando sua conta")
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.throwable.message)
+                }
+                is RequestState.Loading -> showLoading("Criando sua conta")
             }
         })
+
     }
 }

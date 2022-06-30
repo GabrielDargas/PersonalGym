@@ -6,6 +6,7 @@ import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import br.com.gabrieldargas.personalgym.R
 import br.com.gabrieldargas.personalgym.data.remote.datasource.UserRemoteFirebaseDataSourceImpl
 import br.com.gabrieldargas.personalgym.data.remote.repository.UserRepositoryImpl
@@ -53,6 +54,13 @@ class LoginFragment : BaseAuthFragment() {
                 )
             )
         ).get(LoginViewModel::class.java)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpView(view)
+        registerObserver()
+        registerBackPressedAction()
     }
 
     private fun setUpView(view: View) {

@@ -8,15 +8,16 @@ import android.widget.NumberPicker
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import br.com.gabrieldargas.personalgym.R
+import br.com.gabrieldargas.personalgym.databinding.NewExercicioFragmentBinding
 import br.com.gabrieldargas.personalgym.models.Exercicio
 import br.com.gabrieldargas.personalgym.ui.base.auth.BaseAuthFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class CadastroFragment : BaseAuthFragment() {
+class NewExercicioActivity : BaseAuthFragment() {
 
     private var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    override val layout = R.layout.fragment_cadastro
+    override val layout = R.layout.new_exercicio_fragment
     private lateinit var etNomeExercicio: EditText
     private lateinit var np_repeticoes: NumberPicker
     private lateinit var np_series: NumberPicker
@@ -25,7 +26,6 @@ class CadastroFragment : BaseAuthFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setUpView(view)
     }
 

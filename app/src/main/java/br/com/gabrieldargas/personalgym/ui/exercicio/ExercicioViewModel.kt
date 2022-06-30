@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 
 
-class NewExercicio : ViewModel() {
+class ExercicioViewModel : ViewModel() {
 
     private var mAuth : FirebaseAuth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()

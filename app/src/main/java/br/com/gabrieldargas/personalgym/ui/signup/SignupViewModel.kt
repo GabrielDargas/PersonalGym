@@ -2,8 +2,8 @@ package br.com.gabrieldargas.personalgym.ui.signup
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import br.com.gabrieldargas.personalgym.models.NewUser
-import br.com.gabrieldargas.personalgym.models.RequestState
+import br.com.gabrieldargas.personalgym.domain.entity.NewUser
+import br.com.gabrieldargas.personalgym.domain.entity.RequestState
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore

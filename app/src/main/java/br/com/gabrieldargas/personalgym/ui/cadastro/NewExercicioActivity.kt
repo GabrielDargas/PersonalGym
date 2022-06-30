@@ -8,9 +8,8 @@ import android.widget.NumberPicker
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import br.com.gabrieldargas.personalgym.R
-import br.com.gabrieldargas.personalgym.databinding.NewExercicioFragmentBinding
-import br.com.gabrieldargas.personalgym.models.Exercicio
-import br.com.gabrieldargas.personalgym.ui.base.auth.BaseAuthFragment
+import br.com.gabrieldargas.personalgym.domain.entity.NewExercicio
+import br.com.gabrieldargas.personalgym.fragments.base.auth.BaseAuthFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -65,13 +64,13 @@ class NewExercicioActivity : BaseAuthFragment() {
         series: Int,
         repeticoes: Int
     ) {
-        val exercicio = Exercicio(
+        val newExercicio = NewExercicio(
             nome,
             series,
             repeticoes,
             mAuth.currentUser?.uid ?: ""
         )
-        db.collection("exercicios").add(exercicio)
+        db.collection("exercicios").add(newExercicio)
     }
 
 }

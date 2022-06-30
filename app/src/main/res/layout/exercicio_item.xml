@@ -14,17 +14,4 @@
                 tools:text="NomeExercicio"
                />
 
-            <TextView
-                android:id="@+id/tvNumeroSeries"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="NumeroSeries"/>
-
-            <TextView
-                android:id="@+id/tvNumeroRepeticoes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="NumeroRepeticoes"
-                />
-
 </LinearLayout>

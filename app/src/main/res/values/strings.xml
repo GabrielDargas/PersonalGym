@@ -17,13 +17,23 @@
     <string name="label_numerorepeticoes">Número de Repetições</string>
     <string name="label_numeroseries">Número de Séries</string>
 
-    <string name="nomeExercicio">Número de Séries</string>
+    <string name="hint_name">Nome do Exercício</string>
+    <string name="hint_series">Número de Séries</string>
+    <string name="hint_repeticoes">Número de Repetições</string>
+
+    <string name="nomeExercicio">Nome do Exercicio</string>
 
     <string name="button_login">Conectar</string>
     <string name="button_cadastrar">Cadastrar Exercicio</string>
-    <string name="button_criarnovo">Cadastrar Novo Exercicio</string>
+    <string name="button_criarnovo">Novo Exercício</string>
+    <string name="btupdate">Atualizar Exercício</string>
+    <string name="btdelete">Deletar Exercício</string>
+    <string name="btvoltar">Voltar</string>
+    <string name="list_all_itens">Listar todos</string>
+    <string name="close">Fechar</string>
 
-
+    <string name="exercicio_deleted">Exercício deletado</string>
+    <string name="failed_delete">Falha ao deletar</string>
 
     <string name="button_create_account">Criar conta</string>
     <string name="button_i_have_account">Já tenho conta</string>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activityNewExercicio"
+    android:padding="16dp">
+
+
+    <TextView
+        android:id="@+id/tvNewExercicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_constraintEnd_toEndOf="parent"
+        android:layout_constraintStart_toStartOf="parent"
+        android:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/salve_exercicio"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etNameNewExercicio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_constraintHorizontal_bias="1.0"
+        android:layout_constraintTop_toBottomOf="@+id/tvNewExercicio"
+        android:layout_constraintEnd_toEndOf="@+id/tvNewExercicio"
+        android:layout_constraintStart_toStartOf="@+id/tvNewExercicio"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/nomeExercicio"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNewExercicio" />
+
+
+    <EditText
+        android:id="@+id/etSeriesNewExercicio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_constraintHorizontal_bias="1.0"
+        android:layout_constraintTop_toBottomOf="@+id/etNameNewExercicio"
+        android:layout_constraintEnd_toEndOf="@+id/etNameNewExercicio"
+        android:layout_constraintStart_toStartOf="@+id/etNameNewExercicio"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/label_numeroseries"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNameNewExercicio" />
+
+    <EditText
+        android:id="@+id/etRepeticoesNewExercicio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_constraintHorizontal_bias="1.0"
+        android:layout_constraintTop_toBottomOf="@+id/tvNewExercicio"
+        android:layout_constraintEnd_toEndOf="@+id/tvNewExercicio"
+        android:layout_constraintStart_toStartOf="@+id/tvNewExercicio"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/label_numerorepeticoes"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSeriesNewExercicio" />
+
+    <Button
+        android:id="@+id/btSalveNewExercicio"
+        style="@style/button"
+        android:layout_marginBottom="32dp"
+        android:text="@string/button_cadastrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

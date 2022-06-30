@@ -8,9 +8,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
 import br.com.gabrieldargas.personalgym.R
-import br.com.gabrieldargas.personalgym.models.NewUser
-import br.com.gabrieldargas.personalgym.models.RequestState
-import br.com.gabrieldargas.personalgym.ui.base.BaseFragment
+import br.com.gabrieldargas.personalgym.domain.entity.NewUser
+import br.com.gabrieldargas.personalgym.domain.entity.RequestState
+import br.com.gabrieldargas.personalgym.fragments.base.BaseFragment
 
 
 class SignUpFragment : BaseFragment(){

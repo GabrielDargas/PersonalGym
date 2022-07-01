@@ -3,9 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+<<<<<<< HEAD
     android:layout_height="wrap_content"
     android:clickable="true"
     android:id="@+id/itemexercicio">
+=======
+    android:layout_height="wrap_content">
+>>>>>>> parent of d558f9e (Tradução/Inglês)
 
     <LinearLayout style="@style/container_edit_text">
 

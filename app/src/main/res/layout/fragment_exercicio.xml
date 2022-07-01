@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.exercicio.ExercicioFragment">
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_firedb"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/exercicios_list_user" />
+        tools:context=".fragments.newexercicio.NewExercicioFragment"
+        android:orientation="horizontal">
 
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/exercicio_item"
+                />
 
     <Button
-        android:id="@+id/btcadastrarNovoExercicio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/btNewExercicio"
+        style="@style/button"
         android:text="@string/button_criarnovo"
-        app:layout_constraintBottom_toBottomOf="parent"></Button>
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_view"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-16dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+

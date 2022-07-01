@@ -1,38 +1,26 @@
 package br.com.gabrieldargas.personalgym.ui.exercicio
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.lifecycle.LiveData
-<<<<<<< HEAD
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-=======
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
->>>>>>> parent of d558f9e (Tradução/Inglês)
 import br.com.gabrieldargas.personalgym.R
-import br.com.gabrieldargas.personalgym.databinding.FragmentExercicioBinding
-import br.com.gabrieldargas.personalgym.databinding.FragmentSignupBinding
 import br.com.gabrieldargas.personalgym.models.Exercicio
-import br.com.gabrieldargas.personalgym.ui.base.BaseFragment
 import br.com.gabrieldargas.personalgym.ui.base.auth.BaseAuthFragment
-import br.com.gabrieldargas.personalgym.ui.login.LoginViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class ExercicioFragment : BaseAuthFragment() {
 
+    private var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
     override val layout = R.layout.fragment_exercicio
     private lateinit var btcadastrarNovoExercicio: Button
-<<<<<<< HEAD
     private val db = FirebaseFirestore.getInstance()
-    private lateinit var recyclerView : RecyclerView}
-    /*private var exercicios = emptyList<Exercicio>()/*
+    private lateinit var recyclerView : RecyclerView
+    private var exercicios = emptyList<Exercicio>()
 
     /*override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,10 +33,7 @@ class ExercicioFragment : BaseAuthFragment() {
         recyclerView.setLayoutManager(LinearLayoutManager(view.getContext()))
         recyclerView.setAdapter(ExercicioListAdapter)
         return view
-    }
-=======
-
->>>>>>> parent of d558f9e (Tradução/Inglês)
+    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,9 +44,8 @@ class ExercicioFragment : BaseAuthFragment() {
     private fun setUpView(view: View) {
         btcadastrarNovoExercicio = view.findViewById(R.id.btcadastrarNovoExercicio)
         btcadastrarNovoExercicio.setOnClickListener{
-            findNavController().navigate(R.id.cadastroFragment)
+            view.findNavController().navigate(R.id.cadastroFragment)
         }
+
     }
-
-
-}*/
+}

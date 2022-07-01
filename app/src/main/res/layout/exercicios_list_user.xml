@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-<<<<<<< HEAD
     android:layout_height="wrap_content"
-<<<<<<< HEAD
     android:clickable="true"
     android:id="@+id/itemexercicio">
-=======
-    android:layout_height="wrap_content">
->>>>>>> parent of d558f9e (Tradução/Inglês)
-=======
-    android:clickable="true">
->>>>>>> parent of 2d4458e (AAAAAAAA Não vai por nada)
 
     <LinearLayout style="@style/container_edit_text">
+
     <TextView
         android:id="@+id/tvnomeexercicio"
         android:layout_width="match_parent"
@@ -35,4 +28,4 @@
             android:text="Número Repetições: 2" />
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</LinearLayout>

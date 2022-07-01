@@ -3,16 +3,62 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/homeFragment">
-
-
-    <include app:graph="@navigation/login_graph" />
+    app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="br.com.gabrieldargas.personalgym.fragments.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_listItemFragment"
+            app:destination="@id/listItemFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_newExercicioFragment"
+            app:destination="@id/newExercicioFragment" />
+    </fragment>
     <fragment
         android:id="@+id/listItemFragment"
         android:name="br.com.gabrieldargas.personalgym.fragments.exerciciolistitem.ListItemFragment"
-        android:label="ListItemFragment" />
+        android:label="ListItemFragment"
+        tools:layout="@layout/fragment_exercicio_list_item">
+        <action
+            android:id="@+id/action_listItemFragment_to_newExercicioFragment"
+            app:destination="@id/newExercicioFragment" />
+        <action
+            android:id="@+id/action_listItemFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newExercicioFragment"
+        android:name="br.com.gabrieldargas.personalgym.fragments.newexercicio.NewExercicioFragment"
+        android:label="NewExercicioFragment"
+        tools:layout="@layout/fragment_new_exercicio">
+        <action
+            android:id="@+id/action_newExercicioFragment_to_listItemFragment"
+            app:destination="@id/listItemFragment" />
+        <action
+            android:id="@+id/action_newExercicioFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="br.com.gabrieldargas.personalgym.fragments.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="br.com.gabrieldargas.personalgym.fragments.signup.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_signup">
+        <action
+            android:id="@+id/action_signUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

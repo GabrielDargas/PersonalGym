@@ -24,7 +24,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 class LoginFragment : BaseAuthFragment() {
     override val layout = R.layout.fragment_login
 
-    private lateinit var tvSubTitleSignUp: TextView
+    private lateinit var tvSubTitleLogin: TextView
     private lateinit var containerLogin: LinearLayout
     private lateinit var tvResetPassword: TextView
     private lateinit var tvNewAccount: TextView
@@ -53,7 +53,7 @@ class LoginFragment : BaseAuthFragment() {
                     )
                 )
             )
-        ).get(LoginViewModel::class.java)
+        )[LoginViewModel::class.java]
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,13 +64,14 @@ class LoginFragment : BaseAuthFragment() {
     }
 
     private fun setUpView(view: View) {
-        tvSubTitleSignUp = view.findViewById(R.id.tvSubTitleLogin)
+        tvSubTitleLogin = view.findViewById(R.id.tvSubTitleLogin)
         containerLogin = view.findViewById(R.id.containerLogin)
         tvResetPassword = view.findViewById(R.id.tvResetPassword)
         tvNewAccount = view.findViewById(R.id.tvNewAccount)
         btLogin = view.findViewById(R.id.btLogin)
         etEmailLogin = view.findViewById(R.id.etEmailLogin)
         etPasswordLogin = view.findViewById(R.id.etPasswordLogin)
+
         btLogin.setOnClickListener {
             loginViewModel.doLogin(
                 etEmailLogin.text.toString(),
@@ -86,7 +87,7 @@ class LoginFragment : BaseAuthFragment() {
             }
         }
         tvNewAccount.setOnClickListener {
-            findNavController().navigate(R.id.signUpFragment)
+            findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
         }
     }
 
@@ -114,7 +115,7 @@ class LoginFragment : BaseAuthFragment() {
         hideLoading()
         val navIdForArguments = arguments?.getInt(NAVIGATION_KEY)
         if(navIdForArguments == null) {
-            findNavController().navigate(R.id.main_nav_graph)
+            findNavController().navigate(R.id.homeFragment)
         } else {
             findNavController().popBackStack(navIdForArguments, false)
         }
@@ -133,9 +134,4 @@ class LoginFragment : BaseAuthFragment() {
         }
         requireActivity().onBackPressedDispatcher.addCallback(callback)
     }
-
-
-
-
-
 }

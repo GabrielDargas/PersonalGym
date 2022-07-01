@@ -5,7 +5,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import br.com.gabrieldargas.personalgym.R
 import br.com.gabrieldargas.personalgym.data.remote.datasource.ExercicioRemoteDataSourceImpl
 import br.com.gabrieldargas.personalgym.data.remote.repository.ExercicioRepositoryImpl
@@ -16,7 +18,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 class NewExercicioFragment : BaseAuthFragment() {
-    override val layout = R.layout.fragment_new_exercicio1
+    override val layout = R.layout.fragment_new_exercicio
 
     private val newExercicioViewModel: NewExercicioViewModel by lazy {
         ViewModelProvider(
@@ -46,18 +48,23 @@ class NewExercicioFragment : BaseAuthFragment() {
 
     private fun setUpView(view: View) {
         etNameNewExercicio = view.findViewById(R.id.etNameNewExercicio)
-        tvNewExercicio = view.findViewById(R.id.tvNewExercicio)
+        tvNewExercicio = view.findViewById(R.id.tvnewexercicio)
         btSalveNewExercicio = view.findViewById(R.id.btSalveNewExercicio)
         btNewVoltar = view.findViewById(R.id.btNewVoltar)
 
         btSalveNewExercicio.setOnClickListener{
-            newExercicioViewModel.create(
-                etNameNewExercicio.text.toString()
-            )
-            findNavController().navigate(//TODO)
+            val valorNomeExercicio = etNameNewExercicio.text.toString()
+            if(valorNomeExercicio.isEmpty()){
+                Toast.makeText(requireContext(), "O nome não pode estar em branco", Toast.LENGTH_LONG)
+            } else{
+                newExercicioViewModel.create(
+                    valorNomeExercicio
+                )
+        }
+            findNavController().navigate(R.id.action_newExercicioFragment_to_listItemFragment)
         }
         btNewVoltar.setOnClickListener{
-            findNavController().navigate(//TODO)
+            findNavController().navigate(R.id.action_newExercicioFragment_to_homeFragment)
         }
     }
 

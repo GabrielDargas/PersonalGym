@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import br.com.gabrieldargas.personalgym.R
 import br.com.gabrieldargas.personalgym.fragments.base.auth.BaseAuthFragment
 
@@ -40,7 +41,7 @@ class HomeFragment : BaseAuthFragment() {
         }
 
         btNewItem.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_newItemFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_newExercicioFragment)
         }
 
         btClose.setOnClickListener {

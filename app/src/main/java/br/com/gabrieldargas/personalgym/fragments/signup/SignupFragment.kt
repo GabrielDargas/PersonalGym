@@ -74,7 +74,7 @@ class SignUpFragment : BaseFragment() {
                 is RequestState.Success -> {
                     hideLoading()
                     NavHostFragment.findNavController(this)
-                        .navigate(R.id.main_nav_graph)
+                        .navigate(R.id.homeFragment)
                 }
                 is RequestState.Error -> {
                     hideLoading()

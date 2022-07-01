@@ -33,7 +33,7 @@ abstract class BaseAuthFragment : BaseFragment() {
                 } is RequestState.Error -> {
                 hideLoading()
                 findNavController().navigate(
-                    R.id.loginFragment, bundleOf(
+                    R.id.main_nav_graph, bundleOf(
                         NAVIGATION_KEY to findNavController().currentDestination?.id
                     )
                 )

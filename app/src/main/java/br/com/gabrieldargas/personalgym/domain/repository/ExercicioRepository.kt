@@ -7,4 +7,7 @@ interface ExercicioRepository {
 
     suspend fun create(newExercicio: NewExercicio): RequestState<NewExercicio>
 
+
+
+
 }

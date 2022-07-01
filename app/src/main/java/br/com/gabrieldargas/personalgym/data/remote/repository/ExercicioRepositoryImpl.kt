@@ -12,4 +12,6 @@ class ExercicioRepositoryImpl(
         override suspend fun create(newExercicio: NewExercicio): RequestState<NewExercicio> {
             return exercicioRemoteDataSource.create(newExercicio)
         }
+
+
 }

@@ -1,38 +1,32 @@
 <resources>
     <string name="app_name">Personal GYM</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="login_subtitle">Faça login para continuar</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
-    <string name="label_username">SEU NOME</string>
-    <string name="label_phone">TELEFONE</string>
     <string name="label_email">E-MAIL</string>
-    <string name="label_password">SENHA</string>
-    <string name="label_accept_terms">Li e aceitos os termos</string>
-    <string name="label_terms">Termos de uso</string>
 
-    <string name="salve_exercicio">Salve seu exercício</string>
-
-    <string name="label_nomeexercicio">Nome do exercício</string>
-    <string name="label_numerorepeticoes">Número de Repetições</string>
-    <string name="label_numeroseries">Número de Séries</string>
+    <string name="label_nomeexercicio">Exercise name</string>
+    <string name="label_numerorepeticoes">number of repetitions</string>
+    <string name="label_numeroseries">number of series</string>
 
 
-    <string name="button_login">Conectar</string>
-    <string name="button_cadastrar">Cadastrar Exercicio</string>
-    <string name="button_criarnovo">Cadastrar Novo Exercicio</string>
+    <string name="button_cadastrar">Save gym Excercise</string>
 
 
+    <string name="signup_subtitle">fill in the data</string>
 
-    <string name="button_create_account">Criar conta</string>
-    <string name="button_i_have_account">Já tenho conta</string>
-
-    <string name="label_create_account">Criar minha conta</string>
-    <string name="label_reset_password">Esqueci minha senha</string>
-
-    <string name="signup_subtitle">Preencha os dados</string>
-
-    <string name="loading_message_processing">Carregando</string>
+    <string name="login_subtitle">Do login to acess</string>
+    <string name="label_username">Your name</string>
+    <string name="label_phone">Telephone</string>
+    <string name="label_password">Password</string>
+    <string name="salve_exercicio">Save the gym exercise</string>
+    <string name="button_login">Conect</string>
+    <string name="button_criarnovo">Create new Excercise</string>
+    <string name="button_create_account">Create new Account</string>
+    <string name="button_i_have_account">I already have an account</string>
+    <string name="label_create_account">Create my account</string>
+    <string name="label_reset_password">Forgot my password</string>
+    <string name="loading_message_processing">Loading</string>
 
 
 </resources>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:clickable="true">
 
     <LinearLayout style="@style/container_edit_text">
     <TextView
@@ -25,4 +26,4 @@
             android:text="Número Repetições: 2" />
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

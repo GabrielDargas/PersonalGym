@@ -57,4 +57,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
+
 }

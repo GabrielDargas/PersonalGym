@@ -8,10 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.gabrieldargas.personalgym.R
@@ -31,10 +28,10 @@ class ExercicioFragment : BaseAuthFragment() {
     override val layout = R.layout.fragment_exercicio
     private lateinit var btcadastrarNovoExercicio: Button
     private val db = FirebaseFirestore.getInstance()
-    private lateinit var recyclerView : RecyclerView
-    private var exercicios = emptyList<Exercicio>()
+    private lateinit var recyclerView : RecyclerView}
+    /*private var exercicios = emptyList<Exercicio>()/*
 
-    override fun onCreateView(
+    /*override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,4 +59,4 @@ class ExercicioFragment : BaseAuthFragment() {
     }
 
 
-}
+}*/

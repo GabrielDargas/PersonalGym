@@ -15,7 +15,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 class ListItemFragment : BaseAuthFragment() {
 
-    private lateinit var db =
     override val layout = R.layout.fragment_exercicio_list_item
 
     private lateinit var btListNewItem: Button

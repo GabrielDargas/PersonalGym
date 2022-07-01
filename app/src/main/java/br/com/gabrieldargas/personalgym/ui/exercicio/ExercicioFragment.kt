@@ -29,10 +29,10 @@ class ExercicioFragment : BaseAuthFragment() {
 
     private var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
     override val layout = R.layout.fragment_exercicio
+    private lateinit var btcadastrarNovoExercicio: Button
     private val db = FirebaseFirestore.getInstance()
     private lateinit var recyclerView : RecyclerView
-    private var exercicios : ArrayList<Exercicio> = ArrayList()
-    private lateinit var adapter: ExercicioAdapter
+    private var exercicios = emptyList<Exercicio>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,7 +43,7 @@ class ExercicioFragment : BaseAuthFragment() {
         recyclerView = view.findViewById(R.id.rv_firedb)
         recyclerView.setHasFixedSize(true)
         recyclerView.setLayoutManager(LinearLayoutManager(view.getContext()))
-        recyclerView.setAdapter(ExercicioAdapter)
+        recyclerView.setAdapter(ExercicioListAdapter)
         return view
     }
 

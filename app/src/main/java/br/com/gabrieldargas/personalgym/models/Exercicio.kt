@@ -6,6 +6,4 @@ data class Exercicio (
     val series: Int = 0,
     val repeticoes: Int = 0,
     var userId: String = ""
-
-
 )

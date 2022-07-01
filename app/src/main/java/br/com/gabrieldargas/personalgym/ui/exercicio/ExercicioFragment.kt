@@ -22,9 +22,10 @@ import br.com.gabrieldargas.personalgym.ui.login.LoginViewModel
 
 
 class ExercicioFragment : BaseAuthFragment() {
+
     override val layout = R.layout.fragment_exercicio
     private lateinit var btcadastrarNovoExercicio: Button
-    private val loginViewModel: LoginViewModel by viewModels()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

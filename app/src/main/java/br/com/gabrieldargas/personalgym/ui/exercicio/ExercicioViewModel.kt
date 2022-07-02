@@ -17,7 +17,7 @@ class ExercicioViewModel : ViewModel() {
     val exercicioState = MutableLiveData<RequestState<List<Exercicio>>>()
 
     init {
-        getExercicio()
+        getExerciciosInFireStore()
     }
 
     fun deleteAll(){
@@ -52,7 +52,7 @@ class ExercicioViewModel : ViewModel() {
     }
 
 
-    private fun getExerciciosInDB(){
+    fun getExerciciosInFireStore(){
         db.collection("exercicios")
             .get()
             .addOnSuccessListener { documentReference ->
@@ -63,20 +63,4 @@ class ExercicioViewModel : ViewModel() {
                 exercicioState.value = RequestState.Error(Throwable(it.message))
             }
     }
-
-
-    fun getExercicio(){
-        db.collection("exercicios")
-            .document(mAuth.currentUser?.uid ?: "")
-            .get()
-            .addOnSuccessListener { documentReference ->
-                val exer = documentReference.toObject(Exercicio::class.java) ?: Exercicio()
-                RequestState.Success(exer)
-            }
-            .addOnFailureListener { e ->
-                RequestState.Error(Throwable(e.message))
-            }
-
-    }
-
 }

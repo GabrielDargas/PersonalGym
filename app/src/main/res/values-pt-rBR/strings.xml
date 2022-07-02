@@ -19,4 +19,7 @@
     <string name="label_reset_password">Esqueci minha senha</string>
     <string name="signup_subtitle">Preencha os dados</string>
     <string name="loading_message_processing">Carregando</string>
+    <string name="button_list_one">Mostrar Um</string>
+    <string name="button_list_all">Mostrar todos</string>
+    <string name="tv_welcome_msg">Olá!</string>
 </resources>

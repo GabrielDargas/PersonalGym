@@ -6,6 +6,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.NumberPicker
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import br.com.gabrieldargas.personalgym.R
 import br.com.gabrieldargas.personalgym.models.Exercicio
@@ -27,6 +29,7 @@ class CadastroFragment : BaseAuthFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpView(view)
+        registerBackPressedAction()
     }
 
     private fun setUpView(view: View) {
@@ -72,6 +75,15 @@ class CadastroFragment : BaseAuthFragment() {
             mAuth.currentUser?.uid ?: ""
         )
         db.collection("exercicios").add(exercicio)
+    }
+
+    private fun registerBackPressedAction() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                view?.findNavController()?.navigate(R.id.homeFragment)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
     }
 
 }

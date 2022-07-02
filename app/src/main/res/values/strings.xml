@@ -11,9 +11,12 @@
 
 
     <string name="button_cadastrar">Save gym Excercise</string>
+    <string name="button_modificar">Modify gym Excercise</string>
+    <string name="button_excluir">Exclude gym Excercise</string>
 
 
     <string name="signup_subtitle">fill in the data</string>
+    <string name="tv_show_one">Show One Exercise</string>
 
     <string name="login_subtitle">Do login to acess</string>
     <string name="label_username">Your name</string>
@@ -21,12 +24,17 @@
     <string name="label_password">Password</string>
     <string name="salve_exercicio">Save the gym exercise</string>
     <string name="button_login">Conect</string>
+    <string name="button_list_one">Show One</string>
+    <string name="button_list_all">Show All</string>
     <string name="button_criarnovo">Create new Excercise</string>
     <string name="button_create_account">Create new Account</string>
     <string name="button_i_have_account">I already have an account</string>
     <string name="label_create_account">Create my account</string>
     <string name="label_reset_password">Forgot my password</string>
     <string name="loading_message_processing">Loading</string>
+    <string name="tv_welcome_msg">Hello!</string>
+
+
 
 
 </resources>

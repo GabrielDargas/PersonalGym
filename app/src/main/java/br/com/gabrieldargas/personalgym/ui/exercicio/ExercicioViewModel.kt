@@ -7,12 +7,26 @@ import br.com.gabrieldargas.personalgym.models.RequestState
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObjects
 
 
 class ExercicioViewModel : ViewModel() {
 
     private var mAuth : FirebaseAuth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
+    val exercicioState = MutableLiveData<RequestState<List<Exercicio>>>()
+
+    init {
+        getExercicio()
+    }
+
+    fun deleteAll(){
+
+    }
+
+    fun deleteOne(exercicio: Exercicio){
+
+    }
 
     fun alteraExercicio (
         nome: String,
@@ -37,8 +51,22 @@ class ExercicioViewModel : ViewModel() {
             }
     }
 
+
+    private fun getExerciciosInDB(){
+        db.collection("exercicios")
+            .get()
+            .addOnSuccessListener { documentReference ->
+                val exercicio = documentReference.toObjects<Exercicio>()
+                exercicioState.value = RequestState.Success(exercicio)
+            }
+            .addOnFailureListener{ it ->
+                exercicioState.value = RequestState.Error(Throwable(it.message))
+            }
+    }
+
+
     fun getExercicio(){
-        db.collection("exercicio")
+        db.collection("exercicios")
             .document(mAuth.currentUser?.uid ?: "")
             .get()
             .addOnSuccessListener { documentReference ->

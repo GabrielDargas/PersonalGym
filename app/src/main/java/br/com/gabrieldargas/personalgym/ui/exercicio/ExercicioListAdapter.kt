@@ -50,9 +50,18 @@ class  ExercicioListAdapter : RecyclerView.Adapter<ExercicioListAdapter.ViewHold
     }
 
     override fun onBindViewHolder (viewHolder: ViewHolder, i: Int) {
-        viewHolder.nomeExercicio.text = exercicios[i].nome
-        viewHolder.numeroRepeticoes.text = exercicios[i].repeticoes.toString()
-        viewHolder.numeroSeries.text = exercicios[i].series.toString()
+        with(viewHolder){
+            with(exercicios[i]){
+                nomeExercicio.text = this.nome
+                numeroRepeticoes.text = this.repeticoes.toString()
+                numeroSeries.text = this.series.toString()
+            }
+        }
+    }
+
+    internal fun setExercicios (exercicios: List<Exercicio>) {
+        this.exercicios = exercicios
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {

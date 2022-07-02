@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,10 +27,8 @@ class ExercicioFragment : BaseAuthFragment() {
     override val layout = R.layout.fragment_exercicio
     private val exercicioViewModel : ExercicioViewModel by viewModels()
     private lateinit var btcadastrarNovoExercicio: Button
-    //private lateinit var rvExercicios : RecyclerView
-    //private lateinit var adapter: ExercicioListAdapter
-    private var layoutManager : RecyclerView.LayoutManager? = null
-    private var adapter: RecyclerView.Adapter<ExercicioListAdapter.ViewHolder>? = null
+    private lateinit var rvExercicios : RecyclerView
+    private lateinit var adapter: ExercicioListAdapter
 
 
     override fun onCreateView(
@@ -37,24 +36,53 @@ class ExercicioFragment : BaseAuthFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        exercicioViewModel.getExerciciosInFireStore()
         return inflater.inflate(R.layout.fragment_exercicio, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        registerBackPressedAction()
+        setUpView(view)
+        setUpObservers()
+
+
+
+    }
+    private fun setUpView(view: View){
+        exercicioViewModel.getExerciciosInFireStore()
+        adapter = ExercicioListAdapter()
         btcadastrarNovoExercicio = view.findViewById(R.id.btcadastrarNovoExercicio)
         btcadastrarNovoExercicio.setOnClickListener{
             view.findNavController().navigate(R.id.cadastroFragment)
         }
-        registerBackPressedAction()
-        R.id.rv_firedb.apply {
-            layoutManager = LinearLayoutManager(activity)
+
+        rvExercicios = view.findViewById(R.id.rv_firedb)
+        rvExercicios.apply {
+            layoutManager = LinearLayoutManager(context)
             adapter = ExercicioListAdapter()
         }
-
     }
 
+
+
+
+    private fun setUpObservers(){
+        exercicioViewModel.exercicioState.observe(viewLifecycleOwner, Observer {
+            when(it){
+                is RequestState.Success -> {
+                    it?.let {
+                        adapter.setExercicios(it.data)
+                    }
+                }
+                is RequestState.Error -> {
+                    Toast.makeText(context, it.throwable.message, Toast.LENGTH_SHORT).show()
+                }
+                is RequestState.Loading -> {
+                    showLoading("Aguarde um momento")
+                }
+            }
+        })
+    }
 
     private fun registerBackPressedAction() {
         val callback = object : OnBackPressedCallback(true) {

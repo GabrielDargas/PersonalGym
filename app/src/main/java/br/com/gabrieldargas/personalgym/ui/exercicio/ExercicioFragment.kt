@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -25,11 +26,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class ExercicioFragment : BaseAuthFragment() {
     override val layout = R.layout.fragment_exercicio
-    private val exercicioViewModel : ExercicioViewModel by viewModels()
+    private val exercicioViewModel: ExercicioViewModel by activityViewModels()
     private lateinit var btcadastrarNovoExercicio: Button
-    private lateinit var rvExercicios : RecyclerView
+    private lateinit var rvExercicios: RecyclerView
     private lateinit var adapter: ExercicioListAdapter
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        exercicioViewModel.getExerciciosInFireStore()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,9 +42,22 @@ class ExercicioFragment : BaseAuthFragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_exercicio, container, false)
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    }
+}
+
+        /*viewModel.sports.observe(viewLifecycleOwner, Observer { sportsList ->
+            adapter = SportsAdapter(sportsList, sportsItemListener)
+            recyclerView.adapter = adapter
+        })
+
+        RecyclerViewItemDecoration.setItemSpacing(
+            resources,
+            recyclerView
+        )*/
+    
+
+    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         registerBackPressedAction()
         setUpView(view)
@@ -93,4 +111,4 @@ class ExercicioFragment : BaseAuthFragment() {
         requireActivity().onBackPressedDispatcher.addCallback(callback)
     }
 
-}
+}*/

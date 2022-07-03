@@ -1,5 +1,6 @@
 package br.com.gabrieldargas.personalgym.ui.exercicio
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,12 @@ import br.com.gabrieldargas.personalgym.R
 import br.com.gabrieldargas.personalgym.databinding.FragmentExercicioBinding
 import br.com.gabrieldargas.personalgym.models.Exercicio
 
-class  ExercicioListAdapter : RecyclerView.Adapter<ExercicioListAdapter.ViewHolder>() {
+class  ExercicioListAdapter(
+    private val listaExercicios : List<Exercicio>,
+    private val context: Context
+) : RecyclerView.Adapter<ExercicioListAdapter.ViewHolder>() {
+
+    private lateinit var binding: FragmentExercicioBinding
 
     private var exercicios = emptyList<Exercicio>()
 
@@ -44,9 +50,10 @@ class  ExercicioListAdapter : RecyclerView.Adapter<ExercicioListAdapter.ViewHold
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.exercicios_list_user, viewGroup, false)
-        return ViewHolder(v)
+        binding = FragmentExercicioBinding.inflate(
+            LayoutInflater.from(viewGroup.context), viewGroup, false
+        )
+        return ViewHolder(binding.root)
     }
 
     override fun onBindViewHolder (viewHolder: ViewHolder, i: Int) {

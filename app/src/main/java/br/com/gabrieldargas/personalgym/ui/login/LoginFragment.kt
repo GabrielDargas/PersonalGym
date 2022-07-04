@@ -1,21 +1,16 @@
 package br.com.gabrieldargas.personalgym.ui.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import br.com.gabrieldargas.personalgym.R
-import br.com.gabrieldargas.personalgym.databinding.FragmentLoginBinding
 import br.com.gabrieldargas.personalgym.models.RequestState
 import br.com.gabrieldargas.personalgym.ui.base.BaseFragment
 import br.com.gabrieldargas.personalgym.ui.base.auth.NAVIGATION_KEY
-import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : BaseFragment() {
     override val layout = R.layout.fragment_login

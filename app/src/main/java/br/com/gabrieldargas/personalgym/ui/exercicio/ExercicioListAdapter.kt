@@ -1,5 +1,6 @@
 package br.com.gabrieldargas.personalgym.ui.exercicio
 
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,37 +10,31 @@ import br.com.gabrieldargas.personalgym.R
 import br.com.gabrieldargas.personalgym.databinding.FragmentExercicioBinding
 import br.com.gabrieldargas.personalgym.models.Exercicio
 
-class  ExercicioListAdapter : RecyclerView.Adapter<ExercicioListAdapter.ViewHolder>() {
+class  ExercicioListAdapter(
+    var exercicios: List<Exercicio> = listOf(),
+    var onClickListener: (exercicio: Exercicio) -> Unit = {}
+) : RecyclerView.Adapter<ExercicioListAdapter.ViewHolder>() {
 
-    private var exercicios = emptyList<Exercicio>()
+
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        var nomeExercicio: TextView
-        var numeroSeries: TextView
-        var numeroRepeticoes: TextView
-
+        private lateinit var exercicio: Exercicio
+        var nomeExercicio: TextView = itemView.findViewById(R.id.tvnomeexercicio)
+        var numeroSeries: TextView = itemView.findViewById(R.id.tvNumeroSeries)
+        var numeroRepeticoes: TextView = itemView.findViewById(R.id.tvNumeroRepeticoes)
 
         init {
-            nomeExercicio = itemView.findViewById(R.id.tvnomeexercicio)
-            numeroSeries = itemView.findViewById(R.id.tvNumeroSeries)
-            numeroRepeticoes = itemView.findViewById(R.id.tvNumeroRepeticoes)
-
             itemView.setOnClickListener{
-                //TODO AO CLICAR IR PARA LISTAR ONE
-
-                //Example code
-                /*itemView.setOnClickListener {
-                    var position: Int = getAdapterPosition()
-                    val context = itemView.context
-                    val intent = Intent(context, DetailPertanyaan::class.java).apply {
-                        putExtra("NUMBER", position)
-                        putExtra("CODE", itemKode.text)
-                        putExtra("CATEGORY", itemKategori.text)
-                        putExtra("CONTENT", itemIsi.text)
-                    }
-                    context.startActivity(intent)
-                }*/
+                if(::exercicio.isInitialized){
+                    onClickListener(exercicio)
+                }
             }
+        }
+        fun bindView(exercicio: Exercicio){
+            this.exercicio = exercicio
+            nomeExercicio.text = exercicio.nome
+            numeroSeries.text = exercicio.series.toString()
+            numeroRepeticoes.text = exercicio.repeticoes.toString()
         }
     }
 
@@ -50,18 +45,7 @@ class  ExercicioListAdapter : RecyclerView.Adapter<ExercicioListAdapter.ViewHold
     }
 
     override fun onBindViewHolder (viewHolder: ViewHolder, i: Int) {
-        with(viewHolder){
-            with(exercicios[i]){
-                nomeExercicio.text = this.nome
-                numeroRepeticoes.text = this.repeticoes.toString()
-                numeroSeries.text = this.series.toString()
-            }
-        }
-    }
-
-    internal fun setExercicios (exercicios: List<Exercicio>) {
-        this.exercicios = exercicios
-        notifyDataSetChanged()
+        viewHolder.bindView(exercicios[i])
     }
 
     override fun getItemCount(): Int {

@@ -24,7 +24,8 @@ abstract class BaseFragment : Fragment() {
         screenRootView.addView(screenView)
         screenRootView.addView(loadingView)
         return screenRootView
-    } fun showLoading(message: String =
+    } fun showLoading(
+        message: String =
                           "Processando a requisição") {
                                   loadingView.visibility = View.VISIBLE
                                   if (message.isNotEmpty())

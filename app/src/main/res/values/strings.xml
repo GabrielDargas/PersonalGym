@@ -33,8 +33,10 @@
     <string name="label_reset_password">Forgot my password</string>
     <string name="loading_message_processing">Loading</string>
     <string name="tv_welcome_msg">Hello!</string>
-
-
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="want_to_delete_menssage">Confirm Delete</string>
+    <string name="delete_succefuly">Succefuly Delete</string>
 
 
 </resources>

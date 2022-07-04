@@ -15,52 +15,44 @@ class ExercicioViewModel : ViewModel() {
     private var mAuth : FirebaseAuth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
     val exercicioState = MutableLiveData<RequestState<List<Exercicio>>>()
+    var deleteState = MutableLiveData<RequestState<Boolean>>()
 
-    init {
-        getExerciciosInFireStore()
-    }
-
-    fun deleteAll(){
-
-    }
-
-    fun deleteOne(exercicio: Exercicio){
-
-    }
-
-    fun alteraExercicio (
-        nome: String,
-        series: Int,
-        repeticoes: Int
-    ) {
-        val exercicio = Exercicio(
-            nome,
-            series,
-            repeticoes,
-            mAuth.currentUser?.uid ?: ""
-        )
-        db.collection("exercicios")
-            .document(mAuth.currentUser?.uid ?: "")
-            .set(exercicio)
-            .addOnSuccessListener { documentReference ->
-                RequestState.Success(exercicio)
-            }.addOnFailureListener { e ->
-                RequestState.Error(
-                    Throwable(e.message)
-                )
-            }
-    }
-
-
-    fun getExerciciosInFireStore(){
+     fun getExerciciosInFireStore(){
+         exercicioState.value = RequestState.Loading
         db.collection("exercicios")
             .get()
-            .addOnSuccessListener { documentReference ->
-                val exercicio = documentReference.toObjects<Exercicio>()
-                exercicioState.value = RequestState.Success(exercicio)
-            }
-            .addOnFailureListener{ it ->
-                exercicioState.value = RequestState.Error(Throwable(it.message))
+            .addOnSuccessListener {
+                it?.let{ snapshot ->
+                    val exercicios = mutableListOf<Exercicio>()
+                    for (documento in snapshot.documents){
+                        documento.data?.let {
+                            var nome: String = documento["nome"] as String
+                            var repeticoes: Long  = documento["repeticoes"] as Long
+                            var series: Long  = documento["series"] as Long
+                            var exercicio = Exercicio(
+                                nome = nome,
+                                repeticoes = repeticoes,
+                                series = series
+                            )
+                            exercicios.add(exercicio)
+                        }
+                        exercicioState.value = RequestState.Success(exercicios)
+                        }
+                }
             }
     }
+
+
+    fun deleteById(nome: String) {
+        deleteState.value = RequestState.Loading
+        db.collection("exercicios").document(nome).delete()
+            .addOnCompleteListener {
+                getExerciciosInFireStore()
+                deleteState.value = RequestState.Success(true)
+            }
+            .addOnFailureListener { exception ->
+                deleteState.value = RequestState.Error(exception)
+            }
+    }
+
 }

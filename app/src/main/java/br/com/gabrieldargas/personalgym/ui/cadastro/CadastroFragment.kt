@@ -50,8 +50,8 @@ class CadastroFragment : BaseAuthFragment() {
 
 
         btCadastro.setOnClickListener{
-            val valorSeries: Int = np_series.value
-            val valorRepeticoes: Int = np_repeticoes.value
+            val valorSeries: Long = np_series.value.toLong()
+            val valorRepeticoes: Long = np_repeticoes.value.toLong()
             val valorNomeExercicio: String = etNomeExercicio.text.toString()
             if (valorNomeExercicio.isEmpty()){
                 Toast.makeText(requireContext(), "Nome não pode estar vazio",Toast.LENGTH_LONG).show()
@@ -65,8 +65,8 @@ class CadastroFragment : BaseAuthFragment() {
 
     private fun saveInDb(
         nome: String,
-        series: Int,
-        repeticoes: Int
+        series: Long,
+        repeticoes: Long
     ) {
         val exercicio = Exercicio(
             nome,

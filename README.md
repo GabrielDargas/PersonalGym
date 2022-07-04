@@ -7,7 +7,7 @@
  Também há um sistema de login.
  
  ## To-do
- Finalizar recycler view para mostrar os dados
- Implementação do sistema de cards clicáveis na lista para exibir detalhes dos exercícios e poder alterá-los ou excluí-los.
+ Implementação do Update e Delete do CRUD
+
  
  

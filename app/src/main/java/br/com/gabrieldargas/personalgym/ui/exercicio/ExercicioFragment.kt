@@ -98,13 +98,13 @@ class ExercicioFragment : BaseAuthFragment() {
     }
 
     fun showDialogMenu(exercicio: Exercicio) {
-        println("click exercicio: ${exercicio}")
         val bundle = Bundle()
         bundle.putString("exercicioNome", exercicio.nome)
         val builder = AlertDialog.Builder(context)
         val option = arrayOf(getString(R.string.edit), getString(R.string.delete))
         builder.setItems(option) { dialog, which ->
             when (which) {
+                //todo (navegar para alterar cadastro)
                 0 -> findNavController().navigate(R.id.homeFragment, bundle)
                 1 -> showDialogDel(exercicio.nome ?: "")
             }

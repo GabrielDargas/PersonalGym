@@ -19,10 +19,15 @@ class CadastroFragment : BaseAuthFragment() {
 
     private var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
     override val layout = R.layout.fragment_cadastro
+
     private lateinit var etNomeExercicio: EditText
     private lateinit var np_repeticoes: NumberPicker
     private lateinit var np_series: NumberPicker
+
     private lateinit var btCadastro: Button
+
+    private var editId: String? = null
+
     private val db = FirebaseFirestore.getInstance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,6 +74,7 @@ class CadastroFragment : BaseAuthFragment() {
         repeticoes: Long
     ) {
         val exercicio = Exercicio(
+            id = "",
             nome,
             series,
             repeticoes,
